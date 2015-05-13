@@ -1,0 +1,113 @@
+<?php
+  $collection = Mage::getModel('catalog/product')->getCollection();
+?>
+<div class='cgs-home'>
+  <div id='homeCarousel' class='carousel slide'>
+    <ol class='carousel-indicators'>
+      <li data-target='#homeCarousel' data-slide-to='0' class='active'></li>
+      <li data-target='#homeCarousel' data-slide-to='1' class=''></li>
+    </ol>
+    <div class='carousel-inner'>
+      <div class='cgs-item-2 item active'>
+        <div class='container'>
+          <div class='row'>
+            <h1 class='text-center'>Find parts specifically for your radio</h1>
+            <div class='connector-chart-preview row'>
+              <div class='col-md-6'>
+                <img src='<?php echo $this->getSkinUrl('images/cgs-connector-chart-1.png') ?>'  />
+              </div>
+              <div class='col-md-6'>
+                <img src='<?php echo $this->getSkinUrl('images/cgs-connector-chart-2.png') ?>'  />
+              </div>
+            </div>
+          </div>
+          <div class='carousel-caption'>
+            <h1>Connector Chart</h1>
+            <p>Look, just because I don't be givin' no man a foot massage don't make it right for Marsellus to throw Antwone into a glass motherfuckin' house, fuckin' up the way the nigger talks. Motherfucker do that shit to me, he better paralyze my ass, 'cause I'll kill the motherfucker, know what I'm sayin'?</p>
+          </div>
+        </div>
+      </div>
+      <div class='cgs-item-1 item '>
+        <div class='container'>
+          <div class='cgs-best-products row'>
+          <?php
+            $collection->addAttributeToSelect('*');
+            $collection->addFieldToFilter(array(
+              array('attribute' => 'sku', 'eq' => 'EP1323QR'),
+              array('attribute' => 'sku', 'eq' => 'EP1089SC'),
+              array('attribute' => 'sku', 'eq' => 'EP1013XC')
+            ));
+          ?>
+          <?php foreach ($collection as $product): ?>
+          <?php
+            $_categoryIds = $product->getCategoryIds();
+        
+            if( is_array($_categoryIds) ) {
+              $_categoryIds = array_pop( $_categoryIds );
+            }
+            $productCategories = Mage::getModel('catalog/category')->load($_categoryIds);
+            $productUrl = Mage::getBaseUrl().trim( Mage::getModel('catalog/product_url')->getUrlPath( $product, $productCategories ), '/' );
+          ?>
+            <div class='col-md-4'>
+              <a href='<?php echo $productUrl ?>'>
+              <div class='product-image'>
+                <img src='http://placehold.it/720x440' />
+              </div>
+              <div class='row'>
+                <div class='col-md-6'>
+                  <h5><?php echo $product->getName() ?></h5>
+                </div>
+                <div class='col-md-6'>
+                  <h5 class='price text-right'>$<?php echo number_format($product->getPrice(), 2) ?></h5>
+                </div>
+              </div>
+              </a>
+            </div>
+          <?php endforeach; ?>
+          </div>
+        </div>
+        <div class='container'>
+          <div class='carousel-caption'>
+            <h1>Top Sellers</h1>
+            <p>Well, the way they make shows is, they make one show. That show's called a pilot. Then they show that show to the people who make shows, and on the strength of that one show they decide if they're going to make more shows.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a class='left carousel-control' href='#homeCarousel' data-slide='prev'><span class='glyphicon glyphicon-chevron-left'></span></a>
+    <a class='right carousel-control' href='#homeCarousel' data-slide='next'><span class='glyphicon glyphicon-chevron-right'></span></a>
+  </div>
+  <div class='cgs-middle-callout container'>
+    <div class='row  cgs-info-callout'>
+      <div class='col-md-8 text-muted'>
+        <h4 class='text-muted'>Have any questions on your products? Large Order?</h4>
+        <blockquote>Comm Gear Supply has several ways to handle questions, large orders and quotations.</blockquote>
+      </div>
+      <div class='col-md-4'>
+        <div class='buttons pull-right'>
+          <a class='btn btn-lg btn-danger' href='/contacts'>Contact Us</a>
+          <a class='btn btn-lg btn-danger' href='#'>Quote Request</a>
+        </div>
+      </div>
+    </div>
+    <div class='row cgs-seo-callout'>
+      <div class="col-md-3 text-center text-muted">Radio ear pieces</div>
+      <div class="col-md-3 text-center text-muted">tactical ear gadgets</div>
+      <div class="col-md-3 text-center text-muted">lapel microphones</div>
+      <div class="col-md-3 text-center text-muted">two-way radio accessories</div>
+      <div class='col-md-12 text-center text-muted'> We offer police and law enforcement radio ear pieces as well as ear pieces for the military and security industry.</div>
+    </div>
+    <div class='row'>
+      <div class='col-md-8'>
+        <?php echo $this->getLayout()->createBlock('newsletter/subscribe')->setTemplate('newsletter/subscribe.phtml')->toHtml(); ?>
+      </div>
+      <div class='col-md-4'>
+        <div class='cgs-callout cgs-callout-register'>
+          <h4>Register For A CGS Account</h4>
+          <p>Register now to keep track of your orders, shippments.</p>
+          <p><a class='btn btn-outline-inverse btn-sm' href='#'>Register Now</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

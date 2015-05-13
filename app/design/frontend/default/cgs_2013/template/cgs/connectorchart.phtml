@@ -1,0 +1,89 @@
+<div class='cgs-connector-chart hide'>
+  <div class='container connector-chart-content'>
+    <div class='row'>
+      <div class='col-md-4'>
+        <div class='cgs-logo'>
+          <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" >
+            <img src="<?php echo $this->getSkinUrl("images/logo_white@2x.png") ?>" alt="<?php echo $this->getLogoAlt() ?>" title="Comm Gear Supply" />
+          </a>
+        </div>
+      </div>
+      <div class='col-md-7'>
+        <h2 class='text-center'>CONNECTOR CHART</h2>
+      </div>
+      <div class='col-md-1'>
+        <a class='btn btn-danger cgs-connector-close'>Close</a>
+      </div>
+    </div>
+    <div class='row'>
+      <div class='col-md-12'>
+        <p>To locate the products for your specific radio, search for the adapter number that corresponds with your model or use the search box and type your radio model. The adapter number corresponds to your radio type and you can find all the compatible products by matching the adapter number with the last 2 digits of a product number (SKU). For example, if your adapter number is 23, then all of our products ending in 23 are made for your radio. When you have found your adapter, feel free to click the PRODUCTS button to view all products for your radio.</p>
+        <span class='label label-danger'>If you do not see your radio listed, please <a href="/contacts">contact us to verify compatibility.</a></span>
+      </div>
+    </div>
+  </div>
+  <div class='container cgs-chart'>
+    <div class='row'>
+      <div class='col-md-12'>
+        <h4>Filter Products By</h4>
+        <ul class='nav nav-pills'>
+          <!-- <li class='sort' data-sort='data-id'><a href='#'>Adapter Number</a></li> -->
+          <!-- <li class='dropdown'>
+            <a href='#' class="dropdown-toggle" data-toggle="dropdown">Radio Model <span class='caret'></span></a>
+            <ul class='dropdown-menu'> -->
+              <li class='filter' data-filter='all'><a href='#' class='active'>All</a></li>
+              <li class='filter' data-filter='EF Johnson'><a href='#'>EF Johnson</a></li>
+              <li class='filter' data-filter='Icom'><a href='#'>Icom</a></li>
+              <li class='filter' data-filter='Kenwood'><a href='#'>Kenwood</a></li>
+              <li class='filter' data-filter='MACom'><a href='#'>M/A-Com</a></li>
+              <li class='filter' data-filter='MAComHarris'><a href='#'>M/A-Com/Harris</a></li>
+              <li class='filter' data-filter='Motorola'><a href='#'>Motorola</a></li>
+              <li class='filter' data-filter='Nextel'><a href='#'>Nextel</a></li>
+              <li class='filter' data-filter='YaesuVertex'><a href='#'>Yaesu/Vertex</a></li>
+              <!-- <li class='search_filter'><input type='text' name='search_filter' /></li> -->
+            <!-- </ul>
+          </li> -->
+        </ul>
+      </div>
+    </div>
+    <div class='row'>
+      <div class='col-md-12 cgs-connector-chart-models'>
+        <ul class='list-unstyled' id='Grid'>
+        <?php
+          $data = file_get_contents($this->getSkinUrl('js/cchart.json'));
+          $json = json_decode($data, true);
+
+          foreach ($json['adapter'] as $key => $val):
+
+          $fixed_brand = str_replace('/', '', $val['radio_brand']);
+          $fixed_brand = str_replace('-', '', $fixed_brand);
+
+          $models = explode( chr(1), str_replace(array(',', '/'), ' ', $val['radio_models']));
+
+        ?>
+          <li class='mix <?php echo $fixed_brand ?> <?php foreach($models as $model):?><?php echo $model ?><?php endforeach; ?>' data-id='<?php echo $val['id'] ?>'>
+            <div class='media'>
+              <a class='pull-right media-object btn btn-danger' data-attribute-id='<?php echo $val['attribute_id'] ?>' href='#'>
+                Products
+              </a>
+              <div class='media-body'>
+                <h5 class='media-heading'><?php echo $val['name'] ?></h5>
+                <p class='models'><?php echo $val['radio_models'] ?></p>
+                <p>
+                  <span class='label label-default'><?php echo $val['radio_brand'] ?> Radios</span>
+                  <span class='label label-default'>Adapter Number: <?php echo $val['id'] ?></span> 
+                </p>
+              </div>
+            </div>
+
+
+            <!-- <a href='#' data-id='<?php echo $val['id'] ?>' data-attribute-id='<?php echo $val['attribute_id'] ?>'>
+              <?php echo $val['name'] ?>
+            </a> -->
+          </li>
+        <?php endforeach; ?>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

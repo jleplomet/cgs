@@ -1,0 +1,194 @@
+  
+{
+  "adapter": [
+    {
+      "id": "23",
+      "name": "Motorola Multi-Pin",
+      "radio_brand": "Motorola",
+      "radio_models": "XTS1500, XTS2500, XTS3000, XTS3500, XTS5000, MT1500, MT2000, MTS2000, MTX8000, MTX838, MTX9000, MTX-LS, JT1000, HT1000, GP900, PR1500",
+      "attribute_id": "78"
+    },
+    {
+      "id": "33",
+      "name": "Motorola Multi-Pin",
+      "radio_brand": "Motorola",
+      "radio_models": "HT750, HT1250, HT1250LS, HT1550, HT1550XLS, MTX850, MTX850LS, MTX8250, MTX8250LS, MTX950, MTX9250, GP140, GP320, GP328, GP338, GP340, GP360, GP380, GP640, GP680, GP1280, PRO5150, PRO5350, PRO5550, PRO7150, PRO7350, PRO7550, XLS750, PR860",
+      "attribute_id": "79"
+    },
+    {
+      "id": "34",
+      "name": "Motorola Multi-Pin",
+      "radio_brand": "Motorola",
+      "radio_models": "XPR 6300, XPR6350, XPR6500, APX6000, APX7000, RLN-5880 IMPRESS, DP 3400",
+      "attribute_id": "80"
+    },
+    {
+      "id": "43",
+      "name": "Motorola Multi-Pin",
+      "radio_brand": "Motorola",
+      "radio_models": "PRO7150 ELITE, PRO9150 ELITE, EX600, EX500, GL200, GP344, PRO7150 ELITE, PRO9150 ELITE, GP388, GP328Plus, GP338Plus",
+      "attribute_id": "81"
+    },
+    {
+      "id": "73",
+      "name": "Motorola Multi-Pin",
+      "radio_brand": "Motorola",
+      "radio_models": "SABER I, II, III, / ASTRO",
+      "attribute_id": "82"
+    },
+    {
+      "id": "03",
+      "name": "Motorola 2.5mm + 3.5mm",
+      "radio_brand": "Motorola",
+      "radio_models": "GP300, SP50, P110, P1225, P1225LS, LTS2000, CP88, CP150, CP200, CT150, CT250, CT450, CT450LS, GP308, PO80, P2000, PRO2150, PRO3150, P040, GP68, GP88, MTH500,GTX, CP125, EP450, CLS110, CLS1114, BPR40, GTX, LTR, PR400, RADIUS VL-50, GP200",
+      "attribute_id": "83"
+    },
+    {
+      "id": "63",
+      "name": "Motorola 2.5mm",
+      "radio_brand": "Motorola",
+      "radio_models": "FRS and GMRS (Walkie Talkie, Talkabout)",
+      "attribute_id": "84"
+    },
+    {
+      "id": "13",
+      "name": "Motorola 3.5mm Threaded",
+      "radio_brand": "Motorola",
+      "radio_models": "VISAR",
+      "attribute_id": "85"
+    },
+    {
+      "id": "23",
+      "name": "EF Johnson Multi-Pin",
+      "radio_brand": "EF Johnson",
+      "radio_models": "5100 SERIES, 511X, 512X/514X, 518X, 51SLES SERIES, ASECEND ES SERIES",
+      "attribute_id": "71"
+    },
+    {
+      "id": "11",
+      "name": "Kenwood Multi-Pin",
+      "radio_brand": "Kenwood",
+      "radio_models": "TK480, TK481, TK290, TK390, TK380,TK280, TK2140, TK3140, TK3140, TK3180,TK2180, TK190, TK5400, TK5210, 3180/2180/200, NX-200",
+      "attribute_id": "86"
+    },
+    {
+      "id": "01",
+      "name": "Kenwood 3.5mm + 2.5mm",
+      "radio_brand": "Kenwood",
+      "radio_models": "TK208, TK220, TK240, TK240D, TK248, TK250, TK259, TK260G, TK270G, TK272G, TK308, TK320, TK340D, TK340, TK348, TK350, TK353, TK359, TK360G, TK370G, TK372G, TK373G, TK430, TK431, TK1373, TK2100, TK2101, TK2102, TK2130, TK2160, TK2170, TK3100, TK3130, TK3131, TK3160, TK3164, TK3170, TK3200, TK3201, PROTALK XLS, FREETALK XLS",
+      "attribute_id": "87"
+    },
+    {
+      "id": "07",
+      "name": "M/A-Com/Harris Multi-Pin",
+      "radio_brand": "M/A-Com/Harris",
+      "radio_models": "LPE, PRISM",
+      "attribute_id": "88"
+    },
+    {
+      "id": "17",
+      "name": "M/A-Com/Harris Multi-Pin",
+      "radio_brand": "M/A-Com/Harris",
+      "radio_models": "MRK",
+      "attribute_id": "89"
+    },
+    {
+      "id": "28",
+      "name": "M/A-Com/Harris Multi-Pin",
+      "radio_brand": "M/A-Com/Harris",
+      "radio_models": "P5400, P5300, P7300, & XG-75",
+      "attribute_id": "115"
+    },
+    {
+      "id": "27",
+      "name": "M/A-Com Multi-Pin",
+      "radio_brand": "M/A-Com",
+      "radio_models": "700P, P7100, P7130, P7150, P7170, P7200, P5100, P5130, P5150",
+      "attribute_id": "90"
+    },
+    {
+      "id": "02",
+      "name": "Yaesu/Vertex 3.5mm Plug",
+      "radio_brand": "Yaesu/Vertex",
+      "radio_models": "VX-10, VX-300, VX-F-1",
+      "attribute_id": "91"
+    },
+    {
+      "id": "42",
+      "name": "Vertex 3.5mm",
+      "radio_brand": "Vertex",
+      "radio_models": "VX-6R, VX-7R",
+      "attribute_id": "92"
+    },
+    {
+      "id": "12",
+      "name": "Yaesu/Vertex Multi-Pin",
+      "radio_brand": "Yaesu/Vertex",
+      "radio_models": "VX-600, VX-800, VX-900",
+      "attribute_id": "93"
+    },
+    {
+      "id": "52",
+      "name": "Yaesu/Vertex Multi-Pin",
+      "radio_brand": "Yaesu/Vertex",
+      "radio_models": "VX-537 NYPD",
+      "attribute_id": "94"
+    },
+    {
+      "id": "22",
+      "name": "Yaesu/Vertex 3.5mm Security Screws",
+      "radio_brand": "Yaesu/Vertex",
+      "radio_models": "VX-210, VX210A, VX-400, VX-150, VX-160, VX180, VX-410, VX-420, VX-427, VX-520",
+      "attribute_id": "95"
+    },
+    {
+      "id": "32",
+      "name": "Yaesu/Vertex Multi-Pin",
+      "radio_brand": "Yaesu/Vertex",
+      "radio_models": "VX-820, VX-821, VX-824, VX-829, VX-920, VX-921, VX-924, VX-929",
+      "attribute_id": "96"
+    },
+    {
+      "id": "00",
+      "name": "Icom 3.5mm + 2.5mm",
+      "radio_brand": "Icom",
+      "radio_models": "F3S, F3, F4, F4S, F4TR, F10, IC-H2, H6, J12, M5, U12, U16, IC4008, F20",
+      "attribute_id": "97"
+    },
+    {
+      "id": "00IL",
+      "name": "Icom 3.5mm + 2.5mm",
+      "radio_brand": "Icom",
+      "radio_models": "F3G, F3GS, F3GT, F4G, F4GS, F4GT",
+      "attribute_id": "98"
+    },
+    {
+      "id": "00ILS",
+      "name": "Icom 3.5mm + 2.5mm Security Screws",
+      "radio_brand": "Icom",
+      "radio_models": "F11S, F21S, F11, F21, F33GS, F33GT, F43GT, F43TR, F14, F24, F14S, F24S, F3021, F4021",
+      "attribute_id": "99"
+    },
+    {
+      "id": "10",
+      "name": "Icom Multi-Pin",
+      "radio_brand": "Icom",
+      "radio_models": "F30GT, F40GT, M88, M87, F50, F51, F70, F61,F60, F30GS, F40GS, F80, F70, F41G, F31G, F3061, F4061",
+      "attribute_id": "100"
+    },
+    {
+      "id": "56",
+      "name": "Nextel",
+      "radio_brand": "Nextel",
+      "radio_models": "Nextel single pin i-den connector",
+      "attribute_id": "101"
+    },
+    {
+      "id": "00L",
+      "name": "Icom 3.5mm + 2.5mm",
+      "radio_brand": "Icom",
+      "radio_models": "GTX Extra Talk",
+      "attribute_id": "102"
+    }
+  ] 
+}

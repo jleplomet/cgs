@@ -1,0 +1,128 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Product list template
+ *
+ * @see Mage_Catalog_Block_Product_List
+ */
+?>
+<?php
+    $_productCollection=$this->getLoadedProductCollection();
+    $_helper = $this->helper('catalog/output');
+    $data = file_get_contents($this->getSkinUrl('js/cchart.json'));
+    $json = json_decode($data, true);
+
+    function searchForRadioModelsByAdapterName($data, $adapter_name) {
+      $commaCheck = explode(',', $adapter_name);
+
+      if (count($commaCheck) > 1) {
+        return searchForRadioModelsByAdapterName($data, $commaCheck[0]);
+      }
+
+      foreach ($data['adapter'] as $adapter) {
+        if ($adapter['attribute_id'] == $adapter_name) {
+          return $adapter;
+        }
+      }
+    }
+?>
+<?php if(!$_productCollection->count()): ?>
+  <div class="alert alert-danger">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <strong>Error!</strong> <?php echo $this->__('There are no products matching the selection.') ?>
+  </div>
+<?php else: ?>
+
+<div class="cgs-catalog-category-products ">
+  <div class='row'>
+    <div class='col-md-12'>
+      <?php echo $this->getToolbarHtml() ?>
+    </div>
+    <div class='col-md-12'>
+    <?php //List Mode ?>
+    <?php if ($this->getMode() != 'grid'): ?>
+    <?php $_iterator = 0; ?>
+      <div class='cgs-list-products'>
+      <?php foreach ($_productCollection as $_product): ?>
+        <div class='media'>
+          <a class='pull-left' href='<?php echo $_product->getProductUrl() ?>' title='<?php echo $this->stripTags($_product->getName(), null, true) ?>'>
+            <img class='media-object' src='http://placehold.it/120x120' alt='<?php echo $this->stripTags($_product->getName(), null, true) ?>' />
+          </a>
+          <div class='media-body'>
+          <?php
+            $adapter = searchForRadioModelsByAdapterName($json, $_product->getAdapterType()); 
+          ?>
+            <div class='row'>
+              <div class='col-md-6'>
+                <a href='<?php echo $_product->getProductUrl() ?>'><h4 class='media-heading'><?php echo $_helper->productAttribute($_product, $_product->getName() , 'name'); ?></h4></a>
+              </div>
+              <div class='col-md-6'>
+                <?php echo $this->getPriceHtml($_product, true) ?>
+                <div class='cgs-product-links'>
+                <?php if($_product->isSaleable()): ?>
+                  <a class="btn btn-xs btn-danger" title="<?php echo $this->__('Add to Cart') ?>" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><?php echo $this->__('Add to Cart') ?></a>
+                <?php else: ?>
+                  <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+                <?php endif; ?>
+                </div>
+              </div>
+            </div>
+
+            <div class='row'>
+              <div class='col-md-9'>
+                <span class='label label-default'><?php echo $adapter['radio_brand'] ?> Radios</span>
+                <span class='label label-default'><?php echo $adapter['name'] ?></span>
+                <span class='label label-default'>Adapter Number: <?php echo $adapter['id'] ?></span>
+              </div>
+            </div>
+            
+            <div class='row'>
+              <div class='col-md-12'>
+                <h6><?php echo $this->__('This product fits radio models:') //TODO: make sure this doesnt appear if we have no models ?></h6>
+                <small><?php echo $adapter['radio_models'] ?></small>
+              </div>
+            </div>
+
+            <div class='row'>
+              <div class='col-md-12'>
+                <a class='btn btn-sm' href='<?php echo $_product->getProductUrl() ?>'><?php echo $this->__('Learn More') ?></a>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      <?php endforeach; ?>
+      </div>
+    <?php else: ?>
+    <?php //Grid Mode ?>
+    <?php endif; ?>
+    </div>
+  </div>
+</div>
+
+<?php endif; ?>

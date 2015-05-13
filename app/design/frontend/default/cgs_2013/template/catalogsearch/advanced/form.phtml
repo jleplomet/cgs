@@ -1,0 +1,95 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Catalog advanced search form
+ *
+ * @see Mage_CatalogSearch_Block_Advanced_Form
+ */
+?>
+<?php $maxQueryLength= $this->helper('catalogsearch')->getMaxQueryLength();?>
+<div class='cms-content container'>
+    <div class='page-header'>
+        <h3><?php echo $this->__('Catalog Advanced Search') ?></h3>
+    </div>
+    <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+    <form class='form-horizontal' action="<?php echo $this->getSearchPostUrl() ?>" method='get' id='form-validate'>
+        <fieldset>
+        <?php foreach($this->getSearchableAttributes() as $_attribute): ?>
+            <?php $_code = $_attribute->getAttributeCode() ?>
+            <div class='control-group'>
+                <label class='control-label' for='<?php echo $_code ?>'><?php echo $this->getAttributeLabel($_attribute) ?></label>
+                <?php switch($this->getAttributeInputType($_attribute)):
+                    case 'number': ?>
+                    <div class='controls input-range'>
+                        <input type="text" name="<?php echo $_code ?>[from]" value="<?php echo $this->escapeHtml($this->getAttributeValue($_attribute, 'from')) ?>" id="<?php echo $_code ?>" title="<?php echo $this->escapeHtml($this->getAttributeLabel($_attribute)) ?>" class="input-text validate-number span1" maxlength="<?php echo $maxQueryLength;?>" />
+                        &nbsp;-&nbsp;
+                        <input type="text" name="<?php echo $_code ?>[to]" value="<?php echo $this->escapeHtml($this->getAttributeValue($_attribute, 'to')) ?>" id="<?php echo $_code ?>_to" title="<?php echo $this->escapeHtml($this->getAttributeLabel($_attribute)) ?>" class="input-text validate-number span1" maxlength="<?php echo $maxQueryLength;?>" />
+                    </div>
+                    <?php break;
+                    case 'price': ?>
+                    <div class='controls input-range'>
+                        <div class='input-prepend'>
+                            <span class='add-on'>$</span>
+                            <input type="text" name="<?php echo $_code ?>[from]" value="<?php echo $this->escapeHtml($this->getAttributeValue($_attribute, 'from')) ?>" id="<?php echo $_code ?>" title="<?php echo $this->escapeHtml($this->getAttributeLabel($_attribute)) ?>" class="input-text validate-number span1" maxlength="<?php echo $maxQueryLength;?>" />
+                        </div>
+                        &nbsp;-&nbsp;
+                        <div class='input-prepend'>
+                            <span class='add-on'>$</span>
+                            <input type="text" name="<?php echo $_code ?>[to]" value="<?php echo $this->escapeHtml($this->getAttributeValue($_attribute, 'to')) ?>" id="<?php echo $_code ?>_to" title="<?php echo $this->escapeHtml($this->getAttributeLabel($_attribute)) ?>" class="input-text validate-number span1" maxlength="<?php echo $maxQueryLength;?>" />
+                        </div>
+                    </div>
+                    <?php break;
+                    case 'select': ?>
+                    <div class='controls'>
+                        <?php echo $this->getAttributeSelectElement($_attribute) ?>
+                    </div>
+                    <?php break;
+                    case 'yesno': ?>
+                    <div class='controls'>
+                        <?php echo $this->getAttributeYesNoElement($_attribute) ?>
+                    </div>
+                    <?php break;
+                    default: ?>
+                    <div class='controls'>
+                        <input type='text' name="<?php echo $_code ?>" id="<?php echo $_code ?>" value="<?php echo $this->escapeHtml($this->getAttributeValue($_attribute)) ?>" title="<?php echo $this->escapeHtml($this->getAttributeLabel($_attribute)) ?>"  class="input-text <?php echo $this->getAttributeValidationClass($_attribute) ?>" maxlength="<?php echo $maxQueryLength;?>" />
+                    </div>
+                <?php endswitch; ?>
+            </div>
+        <?php endforeach; ?>
+        </fieldset>
+        <div class="form-actions">
+            <button type="submit" title="<?php echo $this->__('Search') ?>" class="btn btn-warning">Search</button>
+        </div>
+    </form>
+
+    <script type="text/javascript">
+    //<![CDATA[
+        var dataForm = new VarienForm('form-validate', true);
+    //]]>
+    </script>
+</div>

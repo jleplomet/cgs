@@ -1,0 +1,29 @@
+<?php
+/**
+ * Comm Gear Supply
+ *
+ * @category    design
+ * @package     default_cgs_2012
+ * @copyright   Copyright (c) 2012 Comm Gear Supply (http://www.commgearsupply.com)
+ */
+ ?>
+<div class="cgs-breadcrumbs">
+    <div class='container'>
+        <?php if($crumbs && is_array($crumbs)): ?>
+            <ol class="breadcrumb">
+                <?php foreach( $crumbs as $_crumbName => $_crumbInfo ): ?>
+                    <?php if($_crumbInfo['link']): ?>
+                        <li class="<?php echo $_crumbName ?>">
+                            <a href="<?php echo $_crumbInfo['link'] ?>" title="<?php echo $this->htmlEscape($_crumbInfo['title']) ?>">
+                                <?php echo $this->htmlEscape($_crumbInfo['label']) ?>
+                            </a>
+                            <span class="divider">/</span>
+                        </li>
+                    <?php elseif($_crumbInfo['last']): ?>
+                        <li class="active <?php echo $_crumbName ?>"><?php echo $this->htmlEscape($_crumbInfo['label']) ?></li>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            </ol>
+        <?php endif; ?>
+    </div>
+</div>

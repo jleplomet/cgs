@@ -1,0 +1,39 @@
+<header class='cgs-header' role='cgs-header'>
+  <div class='container'>
+    <div class='row'>
+      <div class='col-md-5'>
+        <div class='cgs-logo'>
+          <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" >
+            <img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" title="Comm Gear Supply" />
+          </a>
+        </div>
+        <h5>Tactical Ear Gadgets and two-way radio accessories</h5>
+      </div>
+      <div class='col-md-7 cgs-header-right'>
+        <ul class='nav nav-pills '>
+          <li><a href='/contacts'>M-F 8AM-4PM PST | (818) 433-6949</a></li>
+          <li><a href='/contacts'>Email Us</a></li>
+          <li><a href='#' id='cChart'>Connector Chart <span class='glyphicon glyphicon-chevron-right'></span></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class='row'>
+      <?php echo $this->getChildHtml('topMenu') ?>
+    </div>
+  </div>
+  <?php echo $this->getChildHtml('specials') ?>
+  <div class='cgs-header-static hide'>
+    <div class='container'>
+      <div class='row'>
+        <div class='col-md-3 logo'>
+          <img src='<?php echo $this->getSkinUrl("images/logo_white_sm.png") ?>' />
+        </div>
+        <div class='col-md-9'>
+          <div class='notice text-right'>
+            <h4>To locate the products for your specific radio, use our <a class='btn btn-outline-inverse' id='cChartNotice'>Connector Chart</a></h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,111 @@
+<?php
+  $_helper    = $this->helper('catalog/output');
+  $_category  = $this->getCurrentCategory();
+  $_collection  = Mage::getResourceModel('catalog/product_collection')->addCategoryFilter($_category);
+  $_collection->addAttributeToSelect('*');
+  $_collection->addFieldToFilter(array(
+    array('attribute'=>'sku', 'eq'=>'EP1323QR'),
+    array('attribute'=>'sku', 'eq'=>'BW-NT5023')
+  ));
+  $data = file_get_contents($this->getSkinUrl('js/cchart.json'));
+  $json = json_decode($data, true);
+
+  function _searchForRadioModelsByAdapterName($data, $adapter_name) {
+    $commaCheck = explode(',', $adapter_name);
+
+    if (count($commaCheck) > 1) {
+      return _searchForRadioModelsByAdapterName($data, $commaCheck[0]);
+    }
+
+    foreach ($data['adapter'] as $adapter) {
+      if ($adapter['attribute_id'] == $adapter_name) {
+        return $adapter;
+      }
+    }
+  }
+?>
+
+<div class='cgs-catalog-info cgs-catalog-lapelmics'>
+  <div class='row'>
+    <div class='col-md-12'>
+      <div class='adapter-difference'>
+        <h5>The Difference Between QR (Quick Release) &amp; HW (Hardwired) Adapters:</h5>
+        <div class='row'>
+          <div class='col-md-6'>
+            <div class='media'>
+              <div class='pull-left'>
+                <h1 class='media-object'>QR</h1>
+              </div>
+              <div class='media-body'>
+                <ul class=''>
+                  <li>Adapter disconnects from the cabling to allow ease of wear.</li>
+                  <li>Quick Release version allows field repairs which make it cost effective in the long run.</li>
+                  <li>Plug and play kit with all parts required included.</li>
+                  <li>Adapter can be switched out for many different radios.</li>
+                  <li>Microphone on radio will continue to work as backup/fail safe while kit is connected.</li>
+                  <li>Radio fully operational while only Quick Release adapter is attached.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class='col-md-6'>
+            <div class='media'>
+              <div class='pull-left'>
+                <h1 class='media-object'>HW</h1>
+              </div>
+              <div class='media-body'>
+                <ul class=''>
+                  <li>Adapter molded into cabling for microphone and earpiece via kevlar lined cable for strain relief.</li>
+                  <li>No vulnerable connection points.</li>
+                  <li>Plug and play kit with all parts included.</li>
+                  <li>Microphone on radio will continue to work as a backup/fail safe while kit is connected.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <div class='row'>
+    <div class='col-md-12'>
+      <h4><?php echo $this->__('Our Best Selling Lapel Microphones') ?></h4>
+      <div class='row'>
+      <?php foreach ($_collection as $product): ?>
+      <?php
+        $adapter = _searchForRadioModelsByAdapterName($json, $product->getAdapterType()); 
+        $_categoryIds = $product->getCategoryIds();
+
+        if (is_array($_categoryIds)) {
+          $_categoryIds = array_pop( $_categoryIds );
+        }
+
+        $productCategories = Mage::getModel('catalog/category')->load($_categoryIds);
+        $productUrl = Mage::getBaseUrl().trim( Mage::getModel('catalog/product_url')->getUrlPath( $product, $productCategories ), '/' );
+      ?>
+        <div class='col-md-6'>
+          <div class='media'>
+            <div class='media-body'>
+              <div class='row'>
+                <div class='col-md-9'>
+                  <a href='<?php echo $productUrl ?>'><h6 class='media-heading'><?php echo $_helper->productAttribute($product, $product->getName() , 'name'); ?></h6></a>
+                </div>
+                <div class='col-md-3'>
+                  <?php echo $this->getPriceHtml($product, true) ?>
+                </div>
+              </div>
+              <div class='row'>
+                <div class='col-md-12'>
+                  <span class='label label-default'><?php echo $adapter['radio_brand'] ?> Radios</span>
+                  <span class='label label-default'><?php echo $adapter['name'] ?></span>
+                  <span class='label label-default'>Adapter Number: <?php echo $adapter['id'] ?></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <?php endforeach; ?>
+      </div>
+    </div>
+  </div> -->
+</div>
